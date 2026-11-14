@@ -100,8 +100,9 @@
   security.pam.services.sudo_local.touchIdAuth = true;
 
   # dont trust emudhra certs
-  security.pki.caCertificateBlacklist =
-    [ "Comodo AAA Services root" "emSign ECC Root CA - G3" ];
+  # (emSign ECC Root CA - G3 was removed upstream from nss-cacert 3.131.1,
+  # and a blocklist entry missing from the store fails the build)
+  security.pki.caCertificateBlacklist = [ "Comodo AAA Services root" ];
 
   # create /etc/zshrc that loads the nix-darwin environment,
   # required if you want to use darwin's default shell - zsh
